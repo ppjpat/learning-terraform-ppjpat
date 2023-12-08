@@ -14,15 +14,12 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-<<<<<<< HEAD
 data "aws_vpc" "default" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
 }
 
-
 resource "aws_instance" "blog" {
->>>>>>> 940953c265880a2399dabfad3cef4b3676596a38
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
 
@@ -50,7 +47,7 @@ resource "aws_security_group_rule" "blog_http_in" {
   aws_security_group_id = aws_security_group.blog.id
 }
 
-esource "aws_security_group_rule" "blog_https_in" {
+resource "aws_security_group_rule" "blog_https_in" {
   type        = "ingress"
   from_port   = 443
   to_port     = 443
@@ -60,7 +57,7 @@ esource "aws_security_group_rule" "blog_https_in" {
   aws_security_group_id = aws_security_group.blog.id
 }
 
-esource "aws_security_group_rule" "blog_everything_out" {
+resource "aws_security_group_rule" "blog_everything_out" {
   type        = "egress"
   from_port   = 0
   to_port     = 0
